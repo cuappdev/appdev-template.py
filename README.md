@@ -9,18 +9,6 @@ This is a template for writing AppDev backends in Python. We use the following t
 
 It includes a basic "hello, world!" endpoint, and a basic user model.
 
-## Setting Up Database
-Ensure you have `mysql` plus command line tools setup:
-````bash
-mysql
-mysql> CREATE DATABASE templatedb;
-mysql> \q
-cd src
-python manage.py db init  
-python manage.py db migrate
-python manage.py db upgrade
-````
-
 ## Virtualenv
 
 Virtualenv setup!
@@ -33,7 +21,9 @@ pip install git+https://github.com/cuappdev/appdev.py.git --upgrade
 ```
 
 ## Environment Variables
-It's recommended to use [`autoenv`](https://github.com/kennethreitz/autoenv).
+It's recommended to use [`autoenv`](https://github.com/kennethreitz/autoenv). 
+The `pip` installation specified in the README doesn't seem to work, so installing globally is recommended.
+
 The required environment variables for this API are the following:
 
 ```bash
@@ -49,6 +39,23 @@ To source the `.env` file, make a local copy of the `template` file.
 
 ```bash
 cp env.template .env
+```
+
+## Setting Up Database
+Ensure you have `mysql` plus command line tools setup:
+```bash
+mysql -u root -p
+mysql> CREATE DATABASE templatedb;
+mysql> \q
+cd src
+python manage.py db init  
+```
+
+## Updating the Database
+To update the database with changes you make, run the following:
+```bash
+python manage.py db migrate
+python manage.py db upgrade
 ```
 
 ## Testing
